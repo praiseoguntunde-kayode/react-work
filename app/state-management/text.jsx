@@ -3,14 +3,15 @@
 import { useState } from "react";
 export default function Message() {
   const [text, setText] = useState("");
-  const [displayText, setDisplayText] = useState("");
+  const [displayText, setDisplayText] = useState([]);
 
   function handleChange(e) {
     setText(e.target.value);
   }
 
   function result() {
-    setDisplayText(text);
+    // setDisplayText(text);
+    setDisplayText([...displayText, text]);
     setText("");
   }
 
@@ -25,9 +26,12 @@ export default function Message() {
         className="p-2 border w-full rounded-2xl text-center text-lg font-bold"
       />
 
-      <button onClick={result} className="ml-27 p-2 border rounded-2xl text-center mt-2 text-lg font-bold">
+      <button
+        onClick={result}
+        className="ml-27 p-2 border rounded-2xl text-center mt-2 text-lg font-bold"
+      >
         Show Message
-        </button>
+      </button>
 
       {/* <p className="text-lg font-bold text-center">{displayText}</p> */}
 
